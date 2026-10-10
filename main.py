@@ -10,7 +10,7 @@ class ADN:
 
 class secuencias:
     def __init__(self):
-        self.secuencias = []
+            self.secuencias = []
 
     def registrar(self, ADN,id,i=0):
         if i == len(self.secuencias):
