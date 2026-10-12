@@ -12,13 +12,15 @@ class secuencias:
     def __init__(self):
             self.secuencias = []
 
-    def registrar(self, ADN,id,i=0):
+    def registrar(self, ADN, i=0):
         if i == len(self.secuencias):
             self.secuencias.append(ADN)
             return "secuencia agregada correctamente"
-        if self.secuencias[i].id == id:
+
+        if self.secuencias[i].id == ADN.id:
             return "Secuencia ya existe"
-        return self.registrar(ADN,id,i+1)
+
+        return self.registrar(ADN, i + 1)
 
     def contar_patron(self, secuencia, patron, i=0):
         if patron == "":
@@ -124,6 +126,7 @@ class secuencias:
 
         return self.eliminar_bajo_riesgo(riesgo_minimo, i + 1)
 
+    
 # Crear el sistema
 sistema = secuencias()
 
@@ -135,11 +138,11 @@ a4 = ADN(4, "Sol", "ATATATAT", 8)
 
 # 1. Registrar
 print("\n--- REGISTRAR ---")
-print(sistema.registrar(a1, 1))
-print(sistema.registrar(a2, 2))
-print(sistema.registrar(a3, 3))
-print(sistema.registrar(a4, 4))
-print(sistema.registrar(a1, 1))  # ID duplicado
+print(sistema.registrar(a1))
+print(sistema.registrar(a2))
+print(sistema.registrar(a3))
+print(sistema.registrar(a4))
+print(sistema.registrar(a1))  # ID duplicado
 
 # 2. Contar un patrón
 print("\n--- CONTAR PATRÓN ---")
