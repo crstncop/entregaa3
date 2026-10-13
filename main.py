@@ -127,56 +127,54 @@ class secuencias:
         return self.eliminar_bajo_riesgo(riesgo_minimo, i + 1)
 
     
-# Crear el sistema
+
 sistema = secuencias()
 
-# Crear muestras de ADN
-a1 = ADN(1, "Ana", "ATATCGAT", 7)
-a2 = ADN(2, "Luis", "TTATATCC", 9)
-a3 = ADN(3, "Mia", "CCGGAT", 4)
-a4 = ADN(4, "Sol", "ATATATAT", 8)
 
-# 1. Registrar
+a1 = ADN(1, "Ana", "ATATCGAT", 7)
+a2 = ADN(2, "Luis", "TTATATCC", 4)
+a3 = ADN(3, "Mia", "ATGATAT", 3)
+a4 = ADN(4, "Sol", "ATATATAT", 6)
+
+
 print("\n--- REGISTRAR ---")
 print(sistema.registrar(a1))
 print(sistema.registrar(a2))
 print(sistema.registrar(a3))
 print(sistema.registrar(a4))
-print(sistema.registrar(a1))  # ID duplicado
+print(sistema.registrar(a1))  
 
-# 2. Contar un patrón
-print("\n--- CONTAR PATRÓN ---")
-print(sistema.contar_patron("ATAT", "AT"))  # 2
 
-# Contar en todas las muestras
-print("\n--- CONTAR EN TODAS ---")
+
+print("\n--- CONTAR PATRON EN MUESTRAS ---")
 print(sistema.contar_en_todas("AT"))
 
-# 3. Promedio de riesgo
+
 print("\n--- PROMEDIO ---")
-print(sistema.promedio_riesgo())  # 7.0
+print(sistema.promedio_riesgo())  
 
-# 4. Generar subcadenas
-print("\n--- SUBCADENAS ---")
-print(sistema.generar_subcadenas("ATCG", 2))
-# ['AT', 'TC', 'CG']
 
-# 5. Comparar A y T
+print("\n--- GENERAR SUBCADENAS ---")
+print(sistema.generar_subcadenas("ATCGTA ", 3))
+
+
+
 print("\n--- COMPARAR A Y T ---")
+print(sistema.comparar_a_t("AAATG"))
+print(sistema.comparar_a_t("ATTTG"))
 print(sistema.comparar_a_t("AATTG"))
-# Tiene igual cantidad de A y T
 
-# 6. Mutar ADN
+
+
 print("\n--- MUTAR ---")
-print(sistema.mutar("ATCG"))
-# ('TAGC', 2)
+print(sistema.mutar("ATCGTA"))
 
-# 7. Buscar por criterios
-print("\n--- BUSCAR ---")
+
+print("\n--- BUSCAR POR CRITERIO---")
 print(sistema.buscar_por_criterios(7, 8, "AT"))
-# Debe devolver la primera muestra que cumpla los criterios.
 
-# 8. Eliminar bajo riesgo
-print("\n--- ELIMINAR ---")
+
+
+print("\n--- ELIMINAR BAJO RIESGO ---")
 print("Eliminadas:", sistema.eliminar_bajo_riesgo(6))
 print("Muestras restantes:", sistema.secuencias)
