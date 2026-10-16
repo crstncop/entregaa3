@@ -89,19 +89,20 @@ class secuencias:
 
         return (a, t)
 
-    def mutar(self, secuencia, i=0):
+    def mutar_CAMBIO(self, secuencia, i=0):
         if i == len(secuencia):
             return ("", 0)
 
-        resto, cantidad = self.mutar(secuencia, i + 1)
+        resto, cantidad = self.mutar_CAMBIO(secuencia, i + 1)
 
-        if secuencia[i] == "A":
-            return ("T" + resto, cantidad + 1)
-
-        elif secuencia[i] == "T":
-            return ("A" + resto, cantidad + 1)
+        if i % 2 == 0:
+            if secuencia[i] == "A":
+                return ("T" + resto, cantidad + 1)
+            elif secuencia[i] == "T":
+                return ("A" + resto, cantidad + 1)
 
         return (secuencia[i] + resto, cantidad)
+
 
     def buscar_por_criterios(self, riesgo_minimo, longitud_minima, patron, i=0):
         if i == len(self.secuencias):
@@ -166,8 +167,10 @@ print(sistema.comparar_a_t("AATTG"))
 
 
 
-print("\n--- MUTAR ---")
-print(sistema.mutar("ATCGTA"))
+
+
+print("\n--- MUTAR 2 ---")
+print(sistema.mutar_CAMBIO("ATCGTA"))
 
 
 print("\n--- BUSCAR POR CRITERIO---")
